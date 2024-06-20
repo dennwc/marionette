@@ -629,3 +629,8 @@ func (c *Client) Screenshot() ([]byte, error) {
 func (c *Client) ScreenshotImage() (image.Image, error) {
 	return c.takeScreenshotImage(nil)
 }
+
+func (c *Client) PerformActions(actions Actions) (*Response, error) {
+	r, err := c.tr.Send("WebDriver:PerformActions", actions)
+	return r, err
+}
